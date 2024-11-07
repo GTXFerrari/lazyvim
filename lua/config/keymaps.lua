@@ -31,3 +31,5 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Chmod
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Make a file executable (UNIX)" })
+
+vim.keymap.set("n", "<leader>h", "<cmd>ColorizerToggle<CR>", { desc = "Toggle Nvim Colorizer" })
