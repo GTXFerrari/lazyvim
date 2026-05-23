@@ -2,8 +2,9 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
-      "tokyonight",
+      colorscheme = function()
+        require("matugen").setup()
+      end,
     },
   },
 }
