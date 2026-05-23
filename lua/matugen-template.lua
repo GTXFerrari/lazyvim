@@ -1,5 +1,19 @@
 local M = {}
 
+function M.refresh_lualine()
+  if not package.loaded["lualine"] then
+    return
+  end
+
+  vim.schedule(function()
+    local ok, lualine = pcall(require, "lualine")
+    if ok then
+      lualine.setup({ options = { theme = "base16" } })
+      lualine.refresh({ force = true })
+    end
+  end)
+end
+
 function M.setup()
   require("base16-colorscheme").setup({
     -- Background tones
@@ -22,6 +36,7 @@ function M.setup()
     base0E = "{{colors.secondary_fixed_dim.default.hex}}", -- Keywords, Storage
     base0F = "{{colors.error_container.default.hex}}", -- Deprecated, Embedded Tags
   })
+  M.refresh_lualine()
 end
 
 -- Register a signal handler for SIGUSR1 (matugen updates)
