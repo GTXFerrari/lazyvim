@@ -32,7 +32,16 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Chmod
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "Make a file executable (UNIX)" })
 
+-- ColorizerToggle
 vim.keymap.set("n", "<leader>h", "<cmd>ColorizerToggle<CR>", { desc = "Toggle Nvim Colorizer" })
 
 -- Remap Term Escape
 vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], { noremap = true, silent = true })
+
+-- Quick Buffer Rename
+vim.keymap.set("n", "<leader>rb", function()
+  local name = vim.fn.input("Rename Buffer: ")
+  if name ~= "" then
+    vim.cmd("file " .. name)
+  end
+end, { desc = "Rename Buffer" })
